@@ -8,7 +8,7 @@ public class Validator {
     private String phonePattern;
 
     Validator() {
-        this.passwordPattern = "^(?=.*[a-zA-Z])(?=.*[0-9])[-a-zA-Z0-9@#$%/?€^&+=*._()%!'<>|\\\"\\{\\}\\[\\]\\\\]{6,}-?$";
+        this.passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}:<>?,./;'[\\]]).{8,32}$";
         this.emailPattern = "^(.+)@(.+)$";
         this.phonePattern = "^(\\+?\\d{1,3}[- ]?)?\\d{10}$";
     }
@@ -22,7 +22,7 @@ public class Validator {
         return isValidObject(phone) && isValidString(phone) && phone.matches(phonePattern);
     }
 
-    public boolean isPasswordValid(String password) {
+    public boolean isValidPassword(String password) {
         return isValidObject(password) && isValidString(password) && password.matches(passwordPattern);
     }
 
