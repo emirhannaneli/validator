@@ -7,8 +7,8 @@ public class Validator {
     private String emailPattern;
     private String phonePattern;
 
-    Validator() {
-        this.passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}:<>?,./;'[\\]]).{8,32}$";
+    public Validator() {
+        this.passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!.'^@#$%^&+=])(?=\\S+$).{8,}$";
         this.emailPattern = "^(.+)@(.+)$";
         this.phonePattern = "^(\\+?\\d{1,3}[- ]?)?\\d{10}$";
     }
@@ -22,7 +22,7 @@ public class Validator {
      * @param email
      * @return boolean
      * */
-    public boolean isEmailValid(String email) {
+    public boolean isValidEmail(String email) {
         return isValidObject(email) && isValidString(email) && email.matches(emailPattern);
     }
 
@@ -34,7 +34,7 @@ public class Validator {
      * @param phone
      * @return boolean
      * */
-    public boolean isPhoneValid(String phone) {
+    public boolean isValidPhone(String phone) {
         return isValidObject(phone) && isValidString(phone) && phone.matches(phonePattern);
     }
 
@@ -61,21 +61,21 @@ public class Validator {
     }
 
     /*
-    * This method checks if the list is valid.
-    * It checks if the list is not null and not empty.
-    * @param list
-    * @return boolean
-    * */
+     * This method checks if the list is valid.
+     * It checks if the list is not null and not empty.
+     * @param list
+     * @return boolean
+     * */
     public Boolean isValidList(List<?> list) {
         return isValidObject(list) && !list.isEmpty();
     }
 
     /*
-    * This method checks if the object is valid.
-    * It checks if the object is not null.
-    * @param object
-    * @return boolean
-    * */
+     * This method checks if the object is valid.
+     * It checks if the object is not null.
+     * @param object
+     * @return boolean
+     * */
     public Boolean isValidObject(Object object) {
         return object != null;
     }
@@ -85,10 +85,10 @@ public class Validator {
     }
 
     /*
-    * This method sets the password pattern.
-    * @param passwordPattern
-    * @return Validator
-    * */
+     * This method sets the password pattern.
+     * @param passwordPattern
+     * @return Validator
+     * */
     public Validator withPasswordPattern(String passwordPattern) {
         this.passwordPattern = passwordPattern;
         return this;
@@ -99,10 +99,10 @@ public class Validator {
     }
 
     /*
-    * This method sets the email pattern.
-    * @param emailPattern
-    * @return Validator
-    * */
+     * This method sets the email pattern.
+     * @param emailPattern
+     * @return Validator
+     * */
     public Validator withEmailPattern(String emailPattern) {
         this.emailPattern = emailPattern;
         return this;
@@ -113,10 +113,10 @@ public class Validator {
     }
 
     /*
-    * This method sets the phone pattern.
-    * @param phonePattern
-    * @return Validator
-    * */
+     * This method sets the phone pattern.
+     * @param phonePattern
+     * @return Validator
+     * */
     public Validator withPhonePattern(String phonePattern) {
         this.phonePattern = phonePattern;
         return this;

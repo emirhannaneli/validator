@@ -6,17 +6,25 @@ plugins {
 publishing {
     repositories {
         maven {
-            url = uri("https://repo.emirman.dev/repository/maven-releases/")
+            name = "Emirman"
+            def releasesRepoUrl = "https://repo.emirman.dev/repository/maven-releases/"
+            def snapshotsRepoUrl = "https://repo.emirman.dev/repository/maven-snapshots/"
+            url = releasesRepoUrl
             credentials {
                 username = System.getenv("REPO_USER")
                 password = System.getenv("REPO_KEY")
             }
         }
     }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
 }
 
 group = 'dev.emirman.util'
-version = '1.0.2'
+version = '1.0.4'
 
 repositories {
     mavenCentral()
